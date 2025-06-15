@@ -163,11 +163,13 @@ function displayArticle(article) {
     const articleSection = document.getElementById("article-section");
     const sectionTitle = document.querySelector("h2.text-center");
     const sectionDescription = document.querySelector("p.text-center");
+    const searchBar = document.querySelector(".input-group");
     
-    // Ocultar la lista de artículos, el título y la descripción, mostrar la sección del artículo
+    // Ocultar la lista de artículos, el título, la descripción y la barra de búsqueda
     articlesList.style.display = "none";
     if (sectionTitle) sectionTitle.style.display = "none";
     if (sectionDescription) sectionDescription.style.display = "none";
+    if (searchBar) searchBar.style.display = "none";
     articleSection.style.display = "block";
 
     // Actualizar el contenido del artículo
@@ -198,6 +200,9 @@ function displayArticle(article) {
             articlesList.style.display = "flex";
             if (sectionTitle) sectionTitle.style.display = "block";
             if (sectionDescription) sectionDescription.style.display = "block";
+            // Mostrar la barra de búsqueda
+            const searchBar = document.querySelector(".input-group");
+            if (searchBar) searchBar.style.display = "flex";
             // Mostrar la introducción
             const intro = document.getElementById('blog-intro');
             if (intro) intro.style.display = 'block';
