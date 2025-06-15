@@ -1,3 +1,5 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 async function loadArticle() {
     // Obtener el ID del artículo de la URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -9,7 +11,7 @@ async function loadArticle() {
     }
 
     try {
-        const response = await fetch(`http://localhost:5000/api/notion/articles/${articleId}`);
+        const response = await fetch(`${API_URL}/api/notion/articles/${articleId}`);
         if (!response.ok) {
             throw new Error(`Error al obtener el artículo: ${response.status}`);
         }

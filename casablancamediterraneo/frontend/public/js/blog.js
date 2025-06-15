@@ -1,4 +1,5 @@
 // blog.js
+const API_URL = import.meta.env.VITE_API_URL;
 // Llamar a fetchArticles al cargar la página
 document.addEventListener("DOMContentLoaded", fetchArticles);
 
@@ -37,7 +38,7 @@ async function fetchArticles() {
     try {
         toggleSpinner(true);
         await new Promise(resolve => setTimeout(resolve, 1000));
-        const response = await fetch('http://localhost:5000/api/notion/articles');
+        const response = await fetch(`${API_URL}/api/notion/articles`);
         if (!response.ok) throw new Error('Error al cargar los artículos');
         const articles = await response.json();
         allArticles = articles; // Guardar todos los artículos
@@ -138,7 +139,7 @@ async function loadArticle(articleId) {
     }
 
     try {
-        const response = await fetch(`http://localhost:5000/api/notion/articles/${articleId}`);
+        const response = await fetch(`${API_URL}/api/notion/articles/${articleId}`);
         if (!response.ok) throw new Error('Error al cargar el artículo');
         
         const article = await response.json();
@@ -278,7 +279,7 @@ async function loadBlogSection() {
     if (!articlesContainer) return;
 
     try {
-        const response = await fetch('http://localhost:5000/api/notion/articles');
+        const response = await fetch(`${API_URL}/api/notion/articles`);
         if (!response.ok) throw new Error('Error al cargar los artículos');
         
         const articles = await response.json();
