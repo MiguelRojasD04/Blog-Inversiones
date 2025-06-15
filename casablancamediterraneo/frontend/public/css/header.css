@@ -1,0 +1,21 @@
+/* header.css - Estilos para la cabecera del sitio */
+
+/* Contenedor principal */
+.header {
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Sombra de la cabecera */
+}
+
+/* Para cuando el header tenga la clase .scrolled */
+.header.scrolled .navbar {
+    background-color: #003366; /* Cambiar el fondo cuando el scroll pasa los 50px */
+}
+
+/* Media Queries */
+@media (max-width: 576px) {
+    .header {
+        min-height: 40px !important;
+        padding: 0 !important;
+    }
+}

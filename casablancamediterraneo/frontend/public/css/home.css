@@ -1,0 +1,93 @@
+/* home.css - Estilos para la página de inicio */
+
+/* Sección Hero */
+.hero-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80vh;
+    padding: 150px 10%;
+    background-color: #f4f4f4;
+    background-image: linear-gradient(rgba(0, 51, 102, 0.45), rgba(0, 51, 102, 0.45));
+    /* url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Texto del Hero */
+.hero-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 6rem;
+    color: #003366;
+    text-align: left;
+    line-height: 0.9;
+    max-width: 60%;
+}
+
+.hero-text span {
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* Formulario de contacto */
+.contact-form {
+    width: 40%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+/* Campos del formulario */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Botón de envío */
+.contact-form input[type="submit"] {
+    background-color: #003366;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: #001d33;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        height: auto;
+        padding: 10%;
+    }
+
+    .hero-text {
+        font-size: 3rem;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .contact-form {
+        width: 100%;
+        margin-top: 20px;
+    }
+}

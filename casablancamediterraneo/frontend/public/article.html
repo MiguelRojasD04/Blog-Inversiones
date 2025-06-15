@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Artículo - Casablanca Mediterráneo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Contenedores para header y footer -->
+    <div id="header"></div>
+
+    <main class="article-page">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Cabecera del artículo -->
+                    <header class="article-header mb-5">
+                        <h1 id="article-title" class="display-4 mb-3"></h1>
+                        <div class="article-meta d-flex align-items-center gap-3 mb-4">
+                            <span id="article-author" class="text-muted"></span>
+                            <span class="text-muted">•</span>
+                            <span id="article-date" class="text-muted"></span>
+                        </div>
+                        <div class="article-cover mb-4">
+                            <img id="article-image" src="" alt="Imagen del artículo" class="img-fluid rounded shadow">
+                        </div>
+                    </header>
+
+                    <!-- Contenido del artículo -->
+                    <article class="article-content">
+                        <div id="article-content" class="prose"></div>
+                    </article>
+
+                    <!-- Sección de navegación -->
+                    <nav class="article-navigation mt-5 pt-4 border-top">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn btn-outline-primary" data-section="blog">
+                                <i class="fas fa-arrow-left"></i> Volver al blog
+                            </a>
+                            <div class="share-buttons">
+                                <button class="btn btn-outline-secondary me-2">
+                                    <i class="fas fa-share"></i> Compartir
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/loadSections.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/navbar.js" defer></script>
+    <script src="js/article.js" defer></script>
+</body>
+</html> 

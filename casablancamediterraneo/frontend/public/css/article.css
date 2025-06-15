@@ -1,0 +1,247 @@
+/* Estilos para la vista de artículo */
+.article-page {
+    min-height: 100vh;
+    padding-bottom: 100px; /* Espacio para el footer fijo */
+}
+
+.article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.article-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.article-title {
+    font-size: 2.5rem;
+    color: #1a365d;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.article-meta {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+.author-info img {
+    border: 2px solid #e9ecef;
+    transition: border-color 0.3s ease;
+}
+
+.author-info img:hover {
+    border-color: #007bff;
+}
+
+.article-cover img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.article-content {
+    line-height: 1.8;
+    color: #2d3748;
+    text-align: justify;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.article-content h1 {
+    font-size: 2.8rem;
+    color: #1a365d;
+    margin: 2.5rem 0 1.5rem;
+    font-weight: 700;
+    text-align: left;
+}
+
+.article-content h2.article-title {
+    color: #1a365d !important;
+    margin: 2.5rem 0 1.5rem !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+    line-height: 1.3 !important;
+    display: block !important;
+}
+
+.article-content h2.article-title:first-of-type {
+    margin-top: 0 !important;
+}
+
+.article-content h3 {
+    font-size: 1.8rem;
+    color: #2c5282;
+    margin: 1.8rem 0 1rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+    border-radius: 8px;
+}
+
+.article-content blockquote {
+    border-left: 4px solid #4299e1;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #4a5568;
+    font-style: italic;
+    text-align: left;
+}
+
+.article-content .bullet-list {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    text-align: justify;
+}
+
+.article-content .bullet-list::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #4299e1;
+    font-size: 1.2rem;
+}
+
+.article-content .numbered-list {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
+    text-align: justify;
+}
+
+.article-content .numbered-list::before {
+    content: attr(data-number) ".";
+    position: absolute;
+    left: 0;
+    color: #4299e1;
+    font-weight: 600;
+}
+
+.article-content .article-link {
+    color: #4299e1;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.article-content .article-link:hover {
+    color: #2b6cb0;
+    text-decoration: underline;
+}
+
+.article-content strong {
+    font-weight: 700;
+    color: #2d3748;
+}
+
+.article-navigation {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.article-navigation .btn {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+}
+
+.article-navigation .btn i {
+    margin-right: 0.5rem;
+}
+
+.article-image {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.article-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.article-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .article-container {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .article-title {
+        font-size: 2rem;
+    }
+
+    .article-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .article-content h2.article-title {
+        font-size: 2.2rem !important;
+        margin: 2rem 0 1.2rem !important;
+    }
+
+    .article-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .article-cover img {
+        max-height: 300px;
+    }
+
+    .article-image {
+        margin: 1.5rem 0;
+    }
+    
+    .article-image img {
+        border-radius: 4px;
+    }
+}
+
+/* Animaciones */
+.article-header, .article-content, .article-navigation {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.article-header {
+    animation-delay: 0.2s;
+}
+
+.article-content {
+    animation-delay: 0.4s;
+}
+
+.article-navigation {
+    animation-delay: 0.6s;
+} 

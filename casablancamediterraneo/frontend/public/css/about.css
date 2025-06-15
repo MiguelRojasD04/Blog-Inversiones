@@ -1,0 +1,82 @@
+/* about.css - Estilos para la página "Acerca de" */
+
+/* Estilos base */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Contenido principal */
+#content {
+  padding: 150px 0;
+}
+
+/* Tipografía */
+h1.display-4 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 1.5rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.text-muted {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #6c757d;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+/* Enlaces */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: #003366;
+}
+
+/* Imágenes */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .row {
+    text-align: center;
+  }
+
+  .col-md-6 {
+    margin-bottom: 1.5rem;
+  }
+
+  #content {
+    padding-top: 70px;
+    padding-bottom: 200px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

@@ -1,0 +1,33 @@
+/* main.css - Estilos principales y globales */
+
+/* Estilos base del body */
+body {
+    padding-top: 70px;    /* Espacio para el header fijo */
+    padding-bottom: 60px; /* Espacio para el footer fijo */
+    transition: background-color 0.3s ease;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    /* Ajustes del body */
+    body {
+        padding-top: 60px;
+        padding-bottom: 80px;
+    }
+
+    /* Ajustes de contenedores */
+    .container,
+    .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Ajustes de tipografía */
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,81 @@
+/* navbar.css - Estilos para la barra de navegación */
+
+/* Contenedor principal */
+.navbar {
+    background-color: white;
+    border-bottom: 2px solid #003366;
+    transition: background-color 0.3s ease;
+}
+
+/* Logo de la marca */
+.navbar-brand img {
+    width: 180px;
+    height: auto;
+}
+
+/* Botón del menú móvil */
+.navbar-toggler {
+    border: none;
+}
+
+/* Enlaces de navegación */
+.navbar-nav .nav-item .nav-link {
+    color: #003366;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Estados de los enlaces */
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+    background-color: #003366;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .navbar-nav .nav-item {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Ajustes del contenedor */
+    .navbar {
+        min-height: 32px !important;
+        padding: 0 !important;
+    }
+    
+    /* Ajustes del logo */
+    .navbar-brand img {
+        width: 85px !important;
+        height: auto !important;
+        padding: 0 !important;
+    }
+    
+    /* Ajustes de los enlaces */
+    .navbar-nav .nav-link {
+        font-size: 0.92rem !important;
+        padding: 4px 6px !important;
+        line-height: 1.1 !important;
+    }
+    
+    /* Ajustes del botón móvil */
+    .navbar-toggler {
+        padding: 0.1rem 0.5rem !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Ajustes del menú desplegable */
+    .navbar-collapse {
+        padding: 0.2rem 0 !important;
+    }
+}

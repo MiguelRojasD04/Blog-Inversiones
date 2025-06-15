@@ -1,0 +1,13 @@
+/* styles.css - Archivo principal de estilos */
+
+/* Componentes principales */
+@import url('navbar.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('main.css');
+
+/* Páginas específicas */
+@import url('home.css');
+@import url('about.css');
+@import url('blog.css');
+@import url('article.css');
