@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = 'https://blog-inversiones-backend.onrender.com';
 
 async function loadArticle() {
     // Obtener el ID del artículo de la URL
