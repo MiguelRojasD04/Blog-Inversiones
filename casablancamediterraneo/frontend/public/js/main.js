@@ -64,3 +64,55 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
+// Manejar el envío del formulario de contacto
+function setupContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const msgDiv = document.getElementById('contactFormMsg');
+    msgDiv.textContent = '';
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    try {
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      if (res.ok) {
+        msgDiv.style.color = 'green';
+        msgDiv.textContent = '¡Mensaje enviado correctamente!';
+        form.reset();
+      } else {
+        msgDiv.style.color = 'red';
+        msgDiv.textContent = result.error || 'Error enviando el mensaje.';
+      }
+    } catch (err) {
+      msgDiv.style.color = 'red';
+      msgDiv.textContent = 'Error de conexión. Inténtalo más tarde.';
+    }
+  });
+}
+
+// Llamar a setupContactForm cuando se cargue la sección home
+function afterSectionLoad(section) {
+  if (section === 'home') {
+    setupContactForm();
+  }
+}
+
+// Modificar loadSection para llamar a afterSectionLoad
+const originalLoadSection = window.loadSection;
+window.loadSection = function (containerId, url) {
+  fetch(url)
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById(containerId).innerHTML = html;
+      // Detectar la sección cargada
+      const section = url.includes('home') ? 'home' : url.includes('blog') ? 'blog' : url.split('/').pop().replace('.html', '');
+      afterSectionLoad(section);
+    });
+};
+
