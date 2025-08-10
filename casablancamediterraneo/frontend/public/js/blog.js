@@ -1,5 +1,5 @@
 // blog.js
-const API_URL = ''; // Usar URL relativa para el mismo dominio
+const API_URL = '/'; // Usar URL relativa para el mismo dominio
 // Llamar a fetchArticles al cargar la página
 document.addEventListener("DOMContentLoaded", fetchArticles);
 
