@@ -19,8 +19,8 @@ services:
     build:
       context: ./backend  # Carpeta del backend
       dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
+    # ports:  # Comentado para que solo sea accesible internamente
+    #   - "5000:5000"
     environment:
       - NODE_ENV=production
     volumes:
