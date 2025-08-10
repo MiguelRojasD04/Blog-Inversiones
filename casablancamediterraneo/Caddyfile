@@ -1,0 +1,3 @@
+casablancamediterraneo.blog, www.casablancamediterraneo.blog {
+    reverse_proxy frontend:80
+}
