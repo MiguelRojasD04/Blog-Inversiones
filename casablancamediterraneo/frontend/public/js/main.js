@@ -16,11 +16,17 @@ function navigateToSection(section) {
   
   // Cargar la sección correspondiente
   if (section === 'blog') {
-    loadSection("content", "sections/blog.html");
+    if (typeof loadSection === 'function') {
+      loadSection("content", "sections/blog.html");
+    }
   } else if (section === 'home') {
-    loadSection("content", "sections/home.html");
+    if (typeof loadSection === 'function') {
+      loadSection("content", "sections/home.html");
+    }
   } else {
-    loadSection("content", `sections/${section}.html`);
+    if (typeof loadSection === 'function') {
+      loadSection("content", `sections/${section}.html`);
+    }
   }
 }
 
@@ -103,16 +109,5 @@ function afterSectionLoad(section) {
   }
 }
 
-// Modificar loadSection para llamar a afterSectionLoad
-const originalLoadSection = window.loadSection;
-window.loadSection = function (containerId, url) {
-  fetch(url)
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById(containerId).innerHTML = html;
-      // Detectar la sección cargada
-      const section = url.includes('home') ? 'home' : url.includes('blog') ? 'blog' : url.split('/').pop().replace('.html', '');
-      afterSectionLoad(section);
-    });
-};
+// Nota: loadSection está definido en loadSections.js
 

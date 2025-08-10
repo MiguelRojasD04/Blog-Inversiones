@@ -1,4 +1,4 @@
-const API_URL = '/'; // Usar URL relativa para el mismo dominio
+const API_URL = ''; // Usar URL relativa para el mismo dominio
 
 async function loadArticle() {
     // Obtener el ID del artículo de la URL

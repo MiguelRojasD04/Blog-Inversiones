@@ -1,62 +1,74 @@
 // blog.js
-const API_URL = '/'; // Usar URL relativa para el mismo dominio
+const API_URL = ''; // Usar URL relativa para el mismo dominio
+
 // Llamar a fetchArticles al cargar la página
-document.addEventListener("DOMContentLoaded", fetchArticles);
+document.addEventListener("DOMContentLoaded", () => {
+    fetchArticles();
+});
 
 let allArticles = [];
 
-// Función para mostrar/ocultar el spinner
-function toggleSpinner(show) {
-    const spinner = document.getElementById('loading-spinner');
-    const articlesList = document.getElementById('articles-list');
-    
-    if (spinner && articlesList) {
-        if (show) {
-            spinner.classList.remove('hidden');
-            spinner.style.display = 'flex';
-            articlesList.style.display = 'none';
-        } else {
-            spinner.classList.add('hidden');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                articlesList.style.display = 'flex';
-            }, 300); // Esperar a que termine la transición
+        // Función para mostrar/ocultar el spinner
+        function toggleSpinner(show) {
+            const spinner = document.getElementById('loading-spinner');
+            const articlesList = document.getElementById('articles-list');
+            
+            if (spinner && articlesList) {
+                if (show) {
+                    spinner.classList.remove('hidden');
+                    spinner.style.display = 'flex';
+                    articlesList.style.display = 'none';
+                } else {
+                    spinner.classList.add('hidden');
+                    setTimeout(() => {
+                        spinner.style.display = 'none';
+                        articlesList.style.display = 'flex';
+                    }, 300); // Esperar a que termine la transición
+                }
+            } else {
+                console.error('No se encontró el spinner o la lista de artículos');
+            }
         }
-    } else {
-        console.error('No se encontró el spinner o la lista de artículos');
-    }
-}
-
-// Función para cargar los artículos
-async function fetchArticles() {
-    const articlesContainer = document.getElementById("articles-list");
-    if (!articlesContainer) {
-        console.error('No se encontró el contenedor de artículos');
-        return;
-    }
-
-    try {
-        toggleSpinner(true);
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        const response = await fetch(`${API_URL}/api/notion/articles`);
-        if (!response.ok) throw new Error('Error al cargar los artículos');
-        const articles = await response.json();
-        allArticles = articles; // Guardar todos los artículos
-        toggleSpinner(false);
-        setTimeout(() => {
-            displayArticles(articles);
-        }, 300);
-        const urlParams = new URLSearchParams(window.location.search);
-        const articleId = urlParams.get('id');
-        if (articleId) {
-            loadArticle(articleId);
+        
+        // Función para cargar los artículos
+        async function fetchArticles() {
+            const articlesContainer = document.getElementById("articles-list");
+            if (!articlesContainer) {
+                console.error('No se encontró el contenedor de artículos');
+                return;
+            }
+        
+            try {
+                toggleSpinner(true);
+                
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                const apiUrl = `${API_URL}/api/notion/articles`;
+                
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) throw new Error(`Error al cargar los artículos: ${response.status}`);
+                
+                const articles = await response.json();
+                
+                allArticles = articles; // Guardar todos los artículos
+                toggleSpinner(false);
+                
+                setTimeout(() => {
+                    displayArticles(articles);
+                }, 300);
+                
+                const urlParams = new URLSearchParams(window.location.search);
+                const articleId = urlParams.get('id');
+                if (articleId) {
+                    loadArticle(articleId);
+                }
+            } catch (error) {
+                console.error('Error en fetchArticles:', error);
+                toggleSpinner(false);
+                articlesContainer.innerHTML = '<div class="col-12 text-center"><p>Error al cargar los artículos. Por favor, intenta de nuevo más tarde.</p></div>';
+            }
         }
-    } catch (error) {
-        console.error('Error:', error);
-        toggleSpinner(false);
-        articlesContainer.innerHTML = '<div class="col-12 text-center"><p>Error al cargar los artículos. Por favor, intenta de nuevo más tarde.</p></div>';
-    }
-}
 
 // Función para mostrar los artículos
 function displayArticles(articles) {

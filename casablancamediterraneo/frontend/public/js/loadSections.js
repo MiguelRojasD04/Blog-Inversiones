@@ -2,9 +2,11 @@
 async function loadSection(elementId, sectionPath) {
     try {
         const response = await fetch(sectionPath);
+        
         if (!response.ok) throw new Error(`Error al cargar la sección: ${response.status}`);
         
         const content = await response.text();
+        
         const element = document.getElementById(elementId);
         if (element) {
             element.innerHTML = content;
@@ -14,21 +16,36 @@ async function loadSection(elementId, sectionPath) {
                 document.dispatchEvent(new Event('headerLoaded'));
             }
 
-            // Si la sección es blog.html, cargamos el script de blog.js
-            if (sectionPath.includes("sections/blog.html")) {
-                const script = document.createElement('script');
-                script.src = 'js/blog.js';
-                script.defer = true;
-                script.onload = function() {
-                    if (typeof fetchArticles === 'function') {
-                        fetchArticles();
+                                // Si la sección es blog.html, cargamos el script de blog.js
+                    if (sectionPath.includes("sections/blog.html")) {
+                        
+                        // Verificar si blog.js ya está cargado
+                        if (!document.querySelector('script[src="js/blog.js"]')) {
+                            const script = document.createElement('script');
+                            script.src = 'js/blog.js';
+                            script.defer = true;
+                            script.onload = function() {
+                                // Esperar un poco para asegurar que el DOM esté listo
+                                setTimeout(() => {
+                                    if (typeof fetchArticles === 'function') {
+                                        fetchArticles();
+                                    }
+                                }, 100);
+                            };
+                            script.onerror = function() {
+                                console.error('Error al cargar blog.js');
+                            };
+                            document.body.appendChild(script);
+                        } else {
+                            // Si ya está cargado, solo ejecutar fetchArticles
+                            if (typeof fetchArticles === 'function') {
+                                fetchArticles();
+                            }
+                        }
                     }
-                };
-                document.body.appendChild(script);
-            }
         }
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error en loadSection:', error);
     }
 }
 
