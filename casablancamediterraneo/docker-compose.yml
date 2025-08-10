@@ -3,7 +3,7 @@ version: '3'
 services:
   frontend:
     build:
-      context: ./frontend  # Carpeta del frontend
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "80:80"
@@ -14,18 +14,23 @@ services:
       - backend
     networks:
       - app_network
+    restart: always
 
   backend:
     build:
-      context: ./backend  # Carpeta del backend
+      context: ./backend
       dockerfile: Dockerfile
-    # ports:  # Comentado para que solo sea accesible internamente
-    #   - "5000:5000"
+    ports:
+      - "5000:5000"  # Necesario para que Nginx pueda hacer proxy
     environment:
       - NODE_ENV=production
+      - PORT=5000
+      - GMAIL_USER=${GMAIL_USER}
+      - GMAIL_PASS=${GMAIL_PASS}
+      - CONTACT_RECEIVER=${CONTACT_RECEIVER}
     volumes:
       - ./backend:/app
-      - /app/node_modules  # Evita sobreescribir node_modules
+      - /app/node_modules
     restart: always
     networks:
       - app_network
